@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Compose Email</title>
+</head>
+<body>
+    <h1>Compose Email</h1>
+    <form method="post" action="">
+        <label for="recipient">Recipient:</label>
+        <select name="recipient" id="recipient">
+            {% for user in users %}
+                {% if user.id != sender_id %}
+                    <option value="{{ user.id }}">{{ user.username }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <br>
+        <label for="subject">Subject:</label>
+        <input type="text" name="subject" required>
+        <br>
+        <label for="content">Content:</label>
+        <textarea name="content" rows="5" required></textarea>
+        <br>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>

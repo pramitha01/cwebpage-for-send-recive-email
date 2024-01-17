@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sent Items</title>
+</head>
+<body>
+    <h1>Sent Items for {{ user.username }}</h1>
+    <ul>
+        {% for email in emails %}
+            <li>
+                <strong>{{ email.recipient_id }}</strong> - {{ email.subject }}
+                <p>{{ email.message }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+    <p><a href="{{ url_for('home') }}">Logout</a></p>
+</body>
+</html>
